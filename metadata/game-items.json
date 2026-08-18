@@ -1,0 +1,8 @@
+{
+  "name": "Game Asset #{id}",
+  "description": "Item or currency for the Web3 Game",
+  "image": "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi/{id}.png",
+  "properties": {
+    "game": "Crypto Dungeon"
+  }
+}
