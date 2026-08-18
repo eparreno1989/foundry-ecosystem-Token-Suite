@@ -24,10 +24,8 @@ contract DeploySuite is Script {
     /// @dev Retrieves the deployer's private key, initiates state broadcasting, and deploys all 3 contracts
     function run() external {
         // Retrieve private key from environment variables or fallback to Default Anvil Account #0
-        uint256 deployerPrivateKey = vm.envOr(
-            "PRIVATE_KEY",
-            uint256(0xac016a133d60544346c0342d8a52ee5d276263e1f69d3b97d32ba30bf02e9712)
-        );
+        uint256 deployerPrivateKey =
+            vm.envOr("PRIVATE_KEY", uint256(0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80));
 
         address deployer = vm.addr(deployerPrivateKey);
 
@@ -43,7 +41,7 @@ contract DeploySuite is Script {
         // 1. ERC-20 Deployment: Governance Token
         // Parameters: Name, Symbol, Initial Supply (1,000,000 tokens), Owner
         // -----------------------------------------------------------------
-        uint256 initialSupply = 1_000_000 * 10**18;
+        uint256 initialSupply = 1_000_000 * 10 ** 18;
         governanceToken = new GovernanceToken("Governance Token", "GOV", initialSupply, deployer);
         console.log("GovernanceToken (ERC-20) deployed at:", address(governanceToken));
 

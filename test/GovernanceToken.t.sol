@@ -47,12 +47,7 @@ contract GovernanceTokenTest is Test {
 
         vm.startPrank(user1);
         // Capturamos el Custom Error de OpenZeppelin especificando la direccion que falla (user1)
-        vm.expectRevert(
-            abi.encodeWithSelector(
-                Ownable.OwnableUnauthorizedAccount.selector,
-                user1
-            )
-        );
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, user1));
         token.mint(user1, mintAmount);
         vm.stopPrank();
     }
@@ -93,9 +88,9 @@ contract GovernanceTokenTest is Test {
         vm.expectRevert(
             abi.encodeWithSelector(
                 IERC20Errors.ERC20InsufficientAllowance.selector,
-                spender,   // Address attempting the spending
-                100e18,    // Current allowance available
-                150e18     // Needed / requested allowance
+                spender, // Address attempting the spending
+                100e18, // Current allowance available
+                150e18 // Needed / requested allowance
             )
         );
         token.transferFrom(tokenOwner, recipient, 150e18);

@@ -23,11 +23,10 @@ contract DeveloperPass is ERC721URIStorage, Ownable {
     /// @param name Human-readable name of the NFT collection (e.g., "Developer Pass").
     /// @param symbol Ticker symbol of the NFT collection (e.g., "DEVPASS").
     /// @param initialOwner Address receiving administrative ownership privileges upon deployment.
-    constructor(
-        string memory name,
-        string memory symbol,
-        address initialOwner
-    ) ERC721(name, symbol) Ownable(initialOwner) {}
+    constructor(string memory name, string memory symbol, address initialOwner)
+        ERC721(name, symbol)
+        Ownable(initialOwner)
+    {}
 
     /// @notice Safely mints a new NFT and assigns its IPFS metadata URI.
     /// @dev Utilizes pre-increment operator on `_nextTokenId` and enforces `onlyOwner` access control.

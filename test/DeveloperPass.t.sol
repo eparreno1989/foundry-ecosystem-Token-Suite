@@ -54,12 +54,7 @@ contract DeveloperPassTest is Test {
     /// @dev Expects a revert with OpenZeppelin's `OwnableUnauthorizedAccount` custom error selector.
     function testRevert_NonOwnerCannotMint() public {
         vm.startPrank(user1);
-        vm.expectRevert(
-            abi.encodeWithSelector(
-                Ownable.OwnableUnauthorizedAccount.selector,
-                user1
-            )
-        );
+        vm.expectRevert(abi.encodeWithSelector(Ownable.OwnableUnauthorizedAccount.selector, user1));
         nft.safeMint(user1, sampleURI);
         vm.stopPrank();
     }

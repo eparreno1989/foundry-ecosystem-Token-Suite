@@ -39,10 +39,7 @@ contract GameEcosystem is ERC1155, Ownable {
     /// @notice Initializes the GameEcosystem contract with a base IPFS URI and contract owner.
     /// @param baseUri The base IPFS URI pointing to item metadata storage.
     /// @param initialOwner Address receiving ownership administrative privileges upon deployment.
-    constructor(
-        string memory baseUri,
-        address initialOwner
-    ) ERC1155(baseUri) Ownable(initialOwner) {}
+    constructor(string memory baseUri, address initialOwner) ERC1155(baseUri) Ownable(initialOwner) {}
 
     /// @notice Mints Gold Coins to a target address.
     /// @dev Restricted function invokable exclusively by the contract owner (`onlyOwner`).
@@ -57,7 +54,7 @@ contract GameEcosystem is ERC1155, Ownable {
     /// @param amount Quantity of wooden shields to purchase.
     function buyWoodenShield(uint256 amount) external {
         uint256 totalCost = SHIELD_PRICE * amount;
-        
+
         _burn(msg.sender, GOLD_COIN, totalCost);
         _mint(msg.sender, WOODEN_SHIELD, amount, "");
 
@@ -68,7 +65,7 @@ contract GameEcosystem is ERC1155, Ownable {
     /// @dev Enforces strict single-supply policy (`swordMinted`) and burns `SWORD_PRICE` gold coins.
     function buyLegendarySword() external {
         require(!swordMinted, "Legendary Sword already minted");
-        
+
         swordMinted = true;
         _burn(msg.sender, GOLD_COIN, SWORD_PRICE);
         _mint(msg.sender, LEGENDARY_SWORD, 1, "");

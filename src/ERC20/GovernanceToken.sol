@@ -10,7 +10,6 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 /// @notice Custom ERC-20 token implementation serving as a core utility and governance asset.
 /// @dev Extends OpenZeppelin's ERC20, ERC20Burnable, and Ownable modules.
 contract GovernanceToken is ERC20, ERC20Burnable, Ownable {
-
     /// @notice Custom error emitted when attempting to mint to the zero address.
     error InvalidRecipientAddress();
 
@@ -25,12 +24,10 @@ contract GovernanceToken is ERC20, ERC20Burnable, Ownable {
     /// @param symbol The ticker symbol of the token (e.g., "GOV").
     /// @param initialSupply The total initial token supply minted at creation (in wei).
     /// @param initialOwner Address receiving initial supply and ownership administrative privileges.
-    constructor(
-        string memory name,
-        string memory symbol,
-        uint256 initialSupply,
-        address initialOwner
-    ) ERC20(name, symbol) Ownable(initialOwner) {
+    constructor(string memory name, string memory symbol, uint256 initialSupply, address initialOwner)
+        ERC20(name, symbol)
+        Ownable(initialOwner)
+    {
         if (initialSupply > 0) {
             _mint(initialOwner, initialSupply);
             emit TokensMinted(initialOwner, initialSupply);
