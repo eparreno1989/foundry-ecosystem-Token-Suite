@@ -34,8 +34,8 @@ foundryup
 ### Installation
 Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/TU-USUARIO/Foundry-Ecosystem-Token-Suite.git
-cd Foundry-Ecosystem-Token-Suite
+git clone https://github.com/eparreno1989/foundry-ecosystem-Token-Suite.git
+cd foundry-ecosystem-Token-Suite
 forge install
 ```
 ### Run Unit Tests
